@@ -21,7 +21,11 @@ app.use(
     
   })
 );
-app.use(helmet.dnsPrefetchControl());
+app.use(
+  helmet({
+    xDnsPrefetchControl: false,
+  })
+);
 
 
 
