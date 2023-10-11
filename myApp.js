@@ -14,11 +14,11 @@ app.use(helmet.noSniff());
 app.use(helmet.ieNoOpen());
 
 app.use(
-  helmet({
-    strictTransportSecurity: {
+  helmet.hsts({
+    
       maxAge:7776000,
       force: true,
-    },
+    
   })
 );
 
