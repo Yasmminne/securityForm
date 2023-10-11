@@ -22,9 +22,7 @@ app.use(
   })
 );
 app.use(
-  helmet({
-    xDnsPrefetchControl: { allow: false },
-  })
+  helmet.dnsPrefetchControl()
 );
 
 
