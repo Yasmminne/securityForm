@@ -16,7 +16,7 @@ app.use(helmet.ieNoOpen());
 app.use(
   helmet({
     strictTransportSecurity: {
-      maxAge: ninetyDaysInSeconds,
+      maxAge:7776000,
       force: true,
     },
   })
