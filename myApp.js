@@ -3,35 +3,30 @@ const helmet=require('helmet');
 const app = express();
 const ninetyDaysInSeconds = 90*24*60*60;
  
-app.use(helmet.hidePoweredBy());
-app.use(
-  helmet.frameguard({
-    action: "deny",
-  })
-);
-app.use(helmet.xssFilter());
-app.use(helmet.noSniff());
-app.use(helmet.ieNoOpen());
 
-app.use(
-  helmet.hsts({
-    
-      maxAge:7776000,
-      force: true,
-    
-  })
-);
-app.use(helmet.dnsPrefetchControl());
-app.use(helmet.noCache());
-app.use(
-  helmet.
-    contentSecurityPolicy({
-      directives:{
+ 
+
+
+  app.use(helmet({
+    frameguard: {         // configure
+      action: 'deny'
+    },
+    contentSecurityPolicy: {    // enable and configure
+      directives: {
         "defaultSrc":["'self'"],
         "script-src": ["'self'", "trusted-cdn.com"],
-        
-      }}
-  ));
+      }
+    },
+    dnsPrefetchControl: false  ,   // disable
+    htts:{      maxAge:7776000,
+                force: true,},
+    noCache:true ,
+    ieNoOpen: true,
+    noSniff:true,
+    xssFilter:true,
+    hidePoweredBy:true,
+    
+  }))
 
 
 
